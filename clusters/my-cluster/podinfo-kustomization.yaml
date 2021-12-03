@@ -12,7 +12,3 @@ spec:
     kind: GitRepository
     name: podinfo
   targetNamespace: default
-proxy:
-  https: "http://160.92.223.1:443"
-  http: "http://160.92.223.1:443"
-  ftp: "http://160.92.223.1:443"
