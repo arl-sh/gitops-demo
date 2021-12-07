@@ -24,7 +24,7 @@ patches:
         path: /spec/template/spec/containers/0/env/-
         value:
           name: NO_PROXY
-          value: "localhost,127.0.0.1,10.0.0.0/8,172.16.0.0/12,192.168.0.0/16"
+          value: "localhost,.local,127.0.0.1,10.0.0.0/8,172.16.0.0/12,192.168.0.0/16"
       - op: add
         path: /spec/template/spec/containers/0/env/-
         value:
@@ -44,7 +44,7 @@ patches:
         path: /spec/template/spec/containers/0/env/-
         value:
           name: no_proxy
-          value: "localhost,127.0.0.1,10.0.0.0/8,172.16.0.0/12,192.168.0.0/16"
+          value: "localhost,.local,127.0.0.1,10.0.0.0/8,172.16.0.0/12,192.168.0.0/16"
     target:
       kind: Deployment
       labelSelector: "app.kubernetes.io/part-of=flux"

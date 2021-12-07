@@ -5,7 +5,7 @@ GITHUB_TOKEN="ghp_XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
 GITHUB_USERNAME="au2001"
 GITHUB_REPOSITORY="gitops-demo"
 
-cd "$(dirname "$0")"
+cd `dirname "$0"`
 
 kind delete cluster --name="$CLUSTER_NAME"
 
