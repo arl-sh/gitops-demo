@@ -12,4 +12,12 @@ spec:
     kind: GitRepository
     name: podinfo
   targetNamespace: default
+patches:
+  - patch: |
+      - op: replace
+        path: /spec/minReplicas
+        value: 3
+    target:
+      kind: HorizontalPodAutoscaler
+      name: podinfo
 
