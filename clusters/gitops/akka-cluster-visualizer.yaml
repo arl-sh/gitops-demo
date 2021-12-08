@@ -1,0 +1,26 @@
+---
+apiVersion: source.toolkit.fluxcd.io/v1beta1
+kind: GitRepository
+metadata:
+  name: akka-cluster-visualizer
+spec:
+  interval: 30s
+  ref:
+    branch: main
+  url: https://github.com/Atos-IT-Shared-Platform/akka-cluster-visualizer
+---
+kind: Kustomization
+metadata:
+  name: akka-cluster-visualizer
+spec:
+  sourceRef:
+    kind: GitRepository
+    name: akka-cluster-visualizer
+  path: ./k8s/manifests
+  patchesStrategicMerge:
+    - apiVersion: apps/v1
+      kind: Deployment
+      metadata:
+        name: akka-cluster-visualizer
+      spec:
+        replicas: 2
