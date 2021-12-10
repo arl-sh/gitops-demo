@@ -17,6 +17,8 @@ metadata:
   namespace: apps
 spec:
   interval: 30s
+  path: ./flux-config/
+  prune: true
   sourceRef:
     kind: GitRepository
     name: demo-app
