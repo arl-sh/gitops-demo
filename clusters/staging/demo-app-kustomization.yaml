@@ -1,0 +1,47 @@
+apiVersion: source.toolkit.fluxcd.io/v1beta1
+kind: GitRepository
+metadata:
+  name: demo-app
+  namespace: flux-system
+spec:
+  interval: 30s
+  ref:
+    branch: demo-app
+  url: https://github.com/au2001/gitops-demo.git
+
+---
+apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
+kind: Kustomization
+metadata:
+  name: demo-app-config
+  namespace: flux-system
+spec:
+  interval: 30s
+  path: ./flux-config/
+  prune: true
+  sourceRef:
+    kind: GitRepository
+    name: demo-app
+  targetNamespace: flux-system
+
+---
+apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
+kind: Kustomization
+metadata:
+  name: demo-app
+  namespace: flux-system
+spec:
+  dependsOn:
+  - kind: Kustomization
+    name: demo-app-config
+  interval: 30s
+  path: ./apps/demo-app/
+  prune: true
+  sourceRef:
+    kind: GitRepository
+    name: flux-system
+  targetNamespace: apps
+  postBuild:
+    substituteFrom:
+    - kind: ConfigMap
+      name: demo-app
