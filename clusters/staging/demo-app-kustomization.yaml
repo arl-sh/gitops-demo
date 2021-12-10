@@ -32,8 +32,7 @@ metadata:
   namespace: flux-system
 spec:
   dependsOn:
-  - kind: Kustomization
-    name: demo-app-config
+  - name: demo-app-config
   interval: 30s
   path: ./apps/demo-app/
   prune: true
