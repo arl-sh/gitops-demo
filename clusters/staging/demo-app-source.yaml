@@ -11,4 +11,3 @@ spec:
   secretRef:
     name: flux-system
   url: https://github.com/au2001/gitops-demo.git
-
