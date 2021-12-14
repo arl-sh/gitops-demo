@@ -4,4 +4,4 @@ namespace: flux-system
 resources:
   - repository.yaml
   - policy.yaml
-  - automatino.yaml
+  - automation.yaml
