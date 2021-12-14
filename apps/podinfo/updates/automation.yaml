@@ -15,7 +15,7 @@ spec:
       author:
         email: fluxcdbot@users.noreply.github.com
         name: fluxcdbot
-      messageTemplate: 'Update podinfo to {{ (split ":" .Updated.Images._0)._1 }}'
+      messageTemplate: 'Update podinfo to {{ index (split ":" (index .Updated.Images 0)) 1 }}'
     push:
       branch: podinfo-update
   update:
