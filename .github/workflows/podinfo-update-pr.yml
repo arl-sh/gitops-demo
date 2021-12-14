@@ -28,5 +28,5 @@ jobs:
         pr_title: "Update podinfo to ${{ steps.parse.outputs.VERSION }}"
         pr_body: "Changes the podinfo container image to ${{ steps.parse.outputs.IMAGE }}"
         pr_label: "auto-update"
-        pr_reviewer: au2001
+        pr_assignee: au2001
         github_token: ${{ secrets.GITHUB_TOKEN }}
