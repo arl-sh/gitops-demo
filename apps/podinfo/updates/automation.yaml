@@ -4,16 +4,20 @@ metadata:
   name: podinfo
 spec:
   interval: 1m0s
-  checkout:
-    gitRepositoryRef:
-      name: auto-repo
-    branch: main
-  commit:
-    authorEmail: fluxcdbot@users.noreply.github.com
-    authorName: fluxcdbot
-    messageTemplate: 'Update podinfo to {{ index (split ":" (index .Updated.Images 0)) 1 }}'
-  push:
-    branch: podinfo-update
+  sourceRef:
+    kind: GitRepository
+    name: flux-system
+  git:
+    checkout:
+      ref:
+        branch: main
+    commit:
+      author:
+        email: fluxcdbot@users.noreply.github.com
+        name: fluxcdbot
+      messageTemplate: 'Update podinfo to {{ index (split ":" (index .Updated.Images 0)) 1 }}'
+    push:
+      branch: podinfo-update
   update:
     path: ./apps/podinfo
     strategy: Setters
