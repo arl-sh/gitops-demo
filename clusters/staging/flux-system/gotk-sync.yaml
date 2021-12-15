@@ -12,6 +12,7 @@ spec:
   secretRef:
     name: flux-system
   url: https://github.com/au2001/gitops-demo.git
+  gitImplementation: libgit2
 ---
 apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
 kind: Kustomization
