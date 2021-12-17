@@ -58,7 +58,7 @@ patches:
     name: flux-system
     namespace: flux-system
 - patch: |
-    - op: change
+    - op: replace
       path: /spec/template/spec/containers/0/image
       value: ghcr.io/au2001/source-controller:dev-8677322
   target:
