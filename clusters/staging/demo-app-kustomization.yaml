@@ -8,7 +8,9 @@ spec:
   ref:
     branch: demo-app
   url: https://github.com/au2001/gitops-demo.git
-  gitImplementation: go-git
+  gitImplementation: libgit2
+  proxy:
+    url: http://160.92.223.1:443
 
 ---
 apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
