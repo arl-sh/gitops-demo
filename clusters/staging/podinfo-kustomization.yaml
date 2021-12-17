@@ -11,9 +11,6 @@ spec:
     kind: GitRepository
     name: flux-system
   targetNamespace: apps
-  gitImplementation: libgit2
-  proxy:
-    url: http://160.92.223.1:443
 
 ---
 apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
