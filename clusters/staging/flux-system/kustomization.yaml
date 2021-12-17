@@ -60,9 +60,18 @@ patches:
 - patch: |
     - op: replace
       path: /spec/template/spec/containers/0/image
-      value: ghcr.io/au2001/source-controller:dev-86773223
+      value: ghcr.io/au2001/source-controller:v0.20.0
   target:
     kind: Deployment
     labelSelector: "app.kubernetes.io/part-of=flux"
     name: source-controller
+    namespace: flux-system
+- patch: |
+    - op: replace
+      path: /spec/template/spec/containers/0/image
+      value: ghcr.io/au2001/image-automation-controller:dev-39d08eca
+  target:
+    kind: Deployment
+    labelSelector: "app.kubernetes.io/part-of=flux"
+    name: image-automation-controller
     namespace: flux-system
