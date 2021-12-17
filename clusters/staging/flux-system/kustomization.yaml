@@ -57,3 +57,12 @@ patches:
     kind: GitRepository
     name: flux-system
     namespace: flux-system
+- patch: |
+    - op: change
+      path: /spec/template/spec/containers/0/image
+      value: ghcr.io/au2001/source-controller:dev-8677322
+  target:
+    kind: Deployment
+    labelSelector: "app.kubernetes.io/part-of=flux"
+    name: source-controller
+    namespace: flux-system
