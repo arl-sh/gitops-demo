@@ -3,3 +3,50 @@ kind: Kustomization
 resources:
 - gotk-components.yaml
 - gotk-sync.yaml
+patches:
+- patch: |
+    - op: add
+      path: /spec/template/spec/containers/0/env/-
+      value:
+        name: HTTPS_PROXY
+        value: "http://160.92.223.1:443"
+    - op: add
+      path: /spec/template/spec/containers/0/env/-
+      value:
+        name: HTTP_PROXY
+        value: "http://160.92.223.1:443"
+    - op: add
+      path: /spec/template/spec/containers/0/env/-
+      value:
+        name: FTP_PROXY
+        value: "http://160.92.223.1:443"
+    - op: add
+      path: /spec/template/spec/containers/0/env/-
+      value:
+        name: NO_PROXY
+        value: "localhost,.local,.local.,127.0.0.1,10.0.0.0/8,172.16.0.0/12,192.168.0.0/16"
+    - op: add
+      path: /spec/template/spec/containers/0/env/-
+      value:
+        name: https_proxy
+        value: "http://160.92.223.1:443"
+    - op: add
+      path: /spec/template/spec/containers/0/env/-
+      value:
+        name: http_proxy
+        value: "http://160.92.223.1:443"
+    - op: add
+      path: /spec/template/spec/containers/0/env/-
+      value:
+        name: ftp_proxy
+        value: "http://160.92.223.1:443"
+    - op: add
+      path: /spec/template/spec/containers/0/env/-
+      value:
+        name: no_proxy
+        value: "localhost,.local,.local.,127.0.0.1,10.0.0.0/8,172.16.0.0/12,192.168.0.0/16"
+  target:
+    kind: Deployment
+    labelSelector: "app.kubernetes.io/part-of=flux"
+    namespace: flux-system
+
