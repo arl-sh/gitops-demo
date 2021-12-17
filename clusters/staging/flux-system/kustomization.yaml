@@ -60,7 +60,7 @@ patches:
 - patch: |
     - op: replace
       path: /spec/template/spec/containers/0/image
-      value: ghcr.io/au2001/source-controller:dev-8677322
+      value: ghcr.io/au2001/source-controller:dev-86773223
   target:
     kind: Deployment
     labelSelector: "app.kubernetes.io/part-of=flux"
