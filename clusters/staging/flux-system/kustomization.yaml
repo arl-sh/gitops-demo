@@ -69,7 +69,7 @@ patches:
 - patch: |
     - op: replace
       path: /spec/template/spec/containers/0/image
-      value: ghcr.io/au2001/image-automation-controller:v0.19.1
+      value: ghcr.io/au2001/image-automation-controller:v0.19.2
   target:
     kind: Deployment
     labelSelector: "app.kubernetes.io/part-of=flux"
