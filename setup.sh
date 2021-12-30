@@ -14,4 +14,12 @@ if [ "$1" == "reset" ]; then
     kind create cluster --config kind-cluster.conf --name="$CLUSTER_NAME"
 fi
 
-GITHUB_TOKEN="$GITHUB_TOKEN" flux bootstrap github --context="kind-$CLUSTER_NAME" --owner="$GITHUB_USERNAME" --repository="$GITHUB_REPOSITORY" --branch=main --path="$CLUSTER_PATH" --personal --token-auth
+flux bootstrap github \
+  --components-extra=image-reflector-controller,image-automation-controller \
+  --context="kind-$CLUSTER_NAME" \
+  --owner="$GITHUB_USERNAME" \
+  --repository="$GITHUB_REPOSITORY" \
+  --branch=main \
+  --path="$CLUSTER_PATH" \
+  --personal \
+  --token-auth
