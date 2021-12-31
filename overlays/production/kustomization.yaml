@@ -4,5 +4,6 @@ bases:
 - ../../base/config-maps
 patchesStrategicMerge:
 - config-maps-sync.yaml
+resources:
 - demo-app-sync.yaml
 - podinfo-sync.yaml
