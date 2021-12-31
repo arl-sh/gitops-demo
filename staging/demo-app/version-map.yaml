@@ -4,4 +4,4 @@ metadata:
   name: demo-app-version
   namespace: apps
 data:
-  APP_VERSION: 16d77d0
+  APP_VERSION: 5c3a88e
