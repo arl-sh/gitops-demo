@@ -6,5 +6,5 @@ metadata:
 spec:
   interval: 30s
   ref:
-    branch: manifests
+    branch: app-manifests
   url: https://github.com/au2001/gitops-demo.git
