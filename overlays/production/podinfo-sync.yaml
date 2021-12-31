@@ -1,0 +1,20 @@
+apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
+kind: Kustomization
+metadata:
+  name: podinfo-sync
+  namespace: flux-system
+spec:
+  dependsOn:
+  - name: config-maps
+  interval: 30s
+  path: ./apps/overlays/production/podinfo
+  prune: true
+  sourceRef:
+    kind: GitRepository
+    name: app-manifests
+  targetNamespace: apps
+  postBuild:
+    substituteFrom:
+    - kind: ConfigMap
+      name: podinfo-version
+

@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: app
-          image: ghcr.io/au2001/gitops-demo:${version}
+          image: ghcr.io/au2001/gitops-demo:${APP_VERSION}
           ports:
             - containerPort: 8080
           imagePullPolicy: Always
