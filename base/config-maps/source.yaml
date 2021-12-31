@@ -2,7 +2,7 @@ apiVersion: source.toolkit.fluxcd.io/v1beta1
 kind: GitRepository
 metadata:
   name: config-maps
-  namespace: flux-system
+  namespace: apps-sync
 spec:
   interval: 30s
   ref:

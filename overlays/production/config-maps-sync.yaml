@@ -2,6 +2,6 @@ apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
 kind: Kustomization
 metadata:
   name: config-maps
-  namespace: flux-system
+  namespace: apps-sync
 spec:
   path: ./production
