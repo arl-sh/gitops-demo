@@ -3,4 +3,4 @@ kind: Kustomization
 bases:
 - ../../../bases/config-maps
 patchesStrategicMerge:
-- sync.yml
+- sync.yaml

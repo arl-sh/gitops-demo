@@ -4,4 +4,4 @@ metadata:
   name: config-maps
   namespace: flux-system
 spec:
-  path: ./production/
+  path: ./production
