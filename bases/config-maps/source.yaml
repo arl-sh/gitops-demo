@@ -1,0 +1,10 @@
+apiVersion: source.toolkit.fluxcd.io/v1beta1
+kind: GitRepository
+metadata:
+  name: config-maps
+  namespace: flux-system
+spec:
+  interval: 30s
+  ref:
+    branch: config-maps
+  url: https://github.com/au2001/gitops-demo.git
