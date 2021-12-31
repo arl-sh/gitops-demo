@@ -50,14 +50,6 @@ patches:
     labelSelector: "app.kubernetes.io/part-of=flux"
     namespace: flux-system
 - patch: |
-    - op: add
-      path: /spec/gitImplementation
-      value: libgit2
-  target:
-    kind: GitRepository
-    name: flux-system
-    namespace: flux-system
-- patch: |
     - op: replace
       path: /spec/template/spec/containers/0/image
       value: ghcr.io/au2001/source-controller:v0.20.3
