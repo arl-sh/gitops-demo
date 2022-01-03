@@ -7,7 +7,7 @@ spec:
   dependsOn:
   - name: config-maps
   interval: 30s
-  path: ./apps/overlays/staging/podinfo
+  path: ./apps/overlays/testing/podinfo
   prune: true
   sourceRef:
     kind: GitRepository
