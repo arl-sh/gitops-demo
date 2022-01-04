@@ -1,0 +1,8 @@
+apiVersion: image.toolkit.fluxcd.io/v1beta1
+kind: ImageRepository
+metadata:
+  name: demo-app
+  namespace: apps-sync
+spec:
+  image: ghcr.io/au2001/gitops-demo-app
+  interval: 1m0s
