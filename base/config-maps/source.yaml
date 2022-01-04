@@ -7,6 +7,6 @@ spec:
   interval: 30s
   ref:
     branch: config-maps
-  url: ssh://git@github.com:au2001/gitops-demo.git
+  url: ssh://git@github.com/au2001/gitops-demo.git
   secretRef:
     name: config-maps-ssh-key
