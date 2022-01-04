@@ -8,3 +8,4 @@ patchesStrategicMerge:
 resources:
 - demo-app-sync.yaml
 - podinfo-sync.yaml
+- config-maps-ssh-key.yaml
