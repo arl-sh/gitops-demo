@@ -10,4 +10,4 @@ spec:
     numerical:
       order: asc
   filterTags:
-    extract: \1
+    extract: $ts

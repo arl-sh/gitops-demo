@@ -5,4 +5,4 @@ metadata:
   namespace: apps-sync
 spec:
   filterTags:
-    pattern: ^stg-.*-(\d+)$
+    pattern: ^stg-.*-(?P<ts>\d+)$

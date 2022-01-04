@@ -5,4 +5,4 @@ metadata:
   namespace: apps-sync
 spec:
   filterTags:
-    pattern: ^dev-.*-(\d+)$
+    pattern: ^dev-.*-(?P<ts>\d+)$
