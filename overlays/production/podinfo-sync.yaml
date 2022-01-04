@@ -12,7 +12,6 @@ spec:
   sourceRef:
     kind: GitRepository
     name: app-manifests
-  targetNamespace: apps
   postBuild:
     substituteFrom:
     - kind: ConfigMap
