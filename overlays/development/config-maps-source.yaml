@@ -4,6 +4,6 @@ metadata:
   name: config-maps
   namespace: apps-sync
 spec:
-  url: http://github.com/au2001/gitops-demo.git
+  url: https://github.com/au2001/gitops-demo.git
   secretRef: null
   gitImplementation: libgit2
