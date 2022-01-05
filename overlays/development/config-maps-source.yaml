@@ -1,0 +1,8 @@
+apiVersion: source.toolkit.fluxcd.io/v1beta1
+kind: GitRepository
+metadata:
+  name: config-maps
+  namespace: apps-sync
+spec:
+  url: http://github.com/au2001/gitops-demo.git
+  secretRef: null

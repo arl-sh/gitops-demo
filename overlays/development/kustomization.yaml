@@ -3,6 +3,7 @@ kind: Kustomization
 bases:
 - ../../base
 patchesStrategicMerge:
+- config-maps-source.yaml
 - config-maps-sync.yaml
 - updates-automation.yaml
 resources:
