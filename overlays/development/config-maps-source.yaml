@@ -6,3 +6,4 @@ metadata:
 spec:
   url: http://github.com/au2001/gitops-demo.git
   secretRef: null
+  gitImplementation: libgit2
