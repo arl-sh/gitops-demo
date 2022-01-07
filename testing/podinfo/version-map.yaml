@@ -4,4 +4,4 @@ metadata:
   name: podinfo-version
   namespace: apps
 data:
-  APP_VERSION: 6.0.1 # {"$imagepolicy": "apps-sync:podinfo:tag"}
+  APP_VERSION: 6.0.1 # {"$imagepolicy": "apps-sync:podinfo-v6:tag"}
