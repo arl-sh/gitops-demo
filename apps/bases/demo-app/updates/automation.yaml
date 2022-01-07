@@ -19,8 +19,6 @@ spec:
       messageTemplate: |
         Update demo-app
 
-        {{range .Updated.Images}}
-          {{println .}}
-        {{end}}
+        {{range .Updated.Images}}{{println .}}{{end}}
   update:
     strategy: Setters

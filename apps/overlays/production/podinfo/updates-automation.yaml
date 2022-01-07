@@ -8,4 +8,4 @@ spec:
     push:
       branch: prd-podinfo-update
   update:
-    path: ./production
+    path: ./production/podinfo

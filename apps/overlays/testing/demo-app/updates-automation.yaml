@@ -5,4 +5,4 @@ metadata:
   namespace: apps-sync
 spec:
   update:
-    path: ./testing
+    path: ./testing/demo-app
