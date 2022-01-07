@@ -23,18 +23,20 @@ jobs:
         branch=`git branch --show-current`
         app=`sed -n 's/^prd-\(.*\)-update$/\1/p' <<< "$branch"`
         version=`sed -n 's/^\s*APP_VERSION:\s*\(\S*\).*$/\1/p' ./production/$app/version-map.yaml`
+        version_short=`sed -n 's/^prd-\(.*\)-\d+$/\1/p' <<< "$version"`
 
         echo ::set-output name=branch::$branch
         echo ::set-output name=app::$app
         echo ::set-output name=version::$version
+        echo ::set-output name=version_short::$version_short
 
     - name: Create new pull request
       id: create_pr
       uses: repo-sync/pull-request@v2
       with:
         destination_branch: ${{ env.MAIN_BRANCH }}
-        pr_title: Update ${{ steps.vars.outputs.app }} to ${{ steps.vars.outputs.version }}
-        pr_body: Changes the ${{ steps.vars.outputs.app }} container image to version ${{ steps.vars.outputs.version }}
+        pr_title: Update ${{ steps.vars.outputs.app }} to ${{ steps.vars.outputs.version_short || steps.vars.outputs.version }}
+        pr_body: Changes the `${{ steps.vars.outputs.app }}` container image to version `${{ steps.vars.outputs.version }}`
         pr_label: auto-update
         github_token: ${{ secrets.GITHUB_TOKEN }}
 
@@ -60,7 +62,7 @@ jobs:
           owner: ${{ github.repository_owner }}
           repo: ${{ github.event.repository.name }}
           pull_number: ${{ fromJson(steps.get_pr.outputs.data)[0].number }}
-          title: Update ${{ steps.vars.outputs.app }} to ${{ steps.vars.outputs.version }}
-          body: Changes the ${{ steps.vars.outputs.app }} container image to version ${{ steps.vars.outputs.version }}
+          title: Update ${{ steps.vars.outputs.app }} to ${{ steps.vars.outputs.version_short || steps.vars.outputs.version }}
+          body: Changes the `${{ steps.vars.outputs.app }}` container image to version `${{ steps.vars.outputs.version }}`
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
