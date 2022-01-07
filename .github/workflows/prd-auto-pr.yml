@@ -1,0 +1,66 @@
+name: Automatic production PRs
+
+on:
+  push:
+    branches:
+    - prd-*-update
+
+env:
+  MAIN_BRANCH: config-maps
+
+jobs:
+  pull_request:
+    name: Create pull request
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repo
+      uses: actions/checkout@v2
+
+    - name: Compute variables
+      id: vars
+      run: |
+        branch=`git branch --show-current`
+        app=`sed -n 's/^prd-\(.*\)-update$/\1/p' <<< "$branch"`
+        version=`sed -n 's/^\s*APP_VERSION:\s*\(\S*\).*$/\1/p' $app`
+
+        echo ::set-output name=branch::$branch
+        echo ::set-output name=app::$app
+        echo ::set-output name=version::$version
+
+    - name: Create new pull request
+      id: create_pr
+      uses: repo-sync/pull-request@v2
+      with:
+        destination_branch: ${{ env.MAIN_BRANCH }}
+        pr_title: Update ${{ steps.vars.outputs.app }} to ${{ steps.vars.outputs.version }}
+        pr_body: Changes the ${{ steps.vars.outputs.app }} container image to version ${{ steps.vars.outputs.version }}
+        pr_label: auto-update
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+
+    - name: Fetch existing request
+      id: get_pr
+      uses: octokit/request-action@v2.x
+      if: steps.create_pr.outputs.pr_number == ''
+      with:
+        route: GET /repos/{owner}/{repo}/pulls
+        owner: ${{ github.repository_owner }}
+        repo: ${{ github.event.repository.name }}
+        base: ${{ env.MAIN_BRANCH }}
+        head: ${{ steps.vars.outputs.branch }}
+        per_page: 1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+    - name: Update existing pull request
+      uses: octokit/request-action@v2.x
+      if: steps.create_pr.outputs.pr_number == '' && fromJson(steps.get_pr.outputs.data).length > 0
+      with:
+          route: PATCH /repos/{owner}/{repo}/pulls/{pull_number}
+          owner: ${{ github.repository_owner }}
+          repo: ${{ github.event.repository.name }}
+          pull_number: ${{ fromJson(steps.get_pr.outputs.data)[0].number }}
+          title: Update ${{ steps.vars.outputs.app }} to ${{ steps.vars.outputs.version }}
+          body: Changes the ${{ steps.vars.outputs.app }} container image to version ${{ steps.vars.outputs.version }}
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
