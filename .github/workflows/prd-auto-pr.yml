@@ -36,7 +36,7 @@ jobs:
       with:
         destination_branch: ${{ env.MAIN_BRANCH }}
         pr_title: Update ${{ steps.vars.outputs.app }} to ${{ steps.vars.outputs.version_short || steps.vars.outputs.version }}
-        pr_body: Changes the `${{ steps.vars.outputs.app }}` container image to version `${{ steps.vars.outputs.version }}`
+        pr_body: Changes the <code>${{ steps.vars.outputs.app }}</code> container image to version <code>${{ steps.vars.outputs.version }}</code>
         pr_label: auto-update
         github_token: ${{ secrets.GITHUB_TOKEN }}
 
@@ -45,7 +45,7 @@ jobs:
       uses: octokit/request-action@v2.x
       if: steps.create_pr.outputs.pr_number == ''
       with:
-        route: GET /repos/{owner}/{repo}/pulls
+        route: GET /repos/{owner}/{repo}/pulls?base={base}&head={head}per_page={per_page}
         owner: ${{ github.repository_owner }}
         repo: ${{ github.event.repository.name }}
         base: ${{ env.MAIN_BRANCH }}
@@ -63,6 +63,6 @@ jobs:
           repo: ${{ github.event.repository.name }}
           pull_number: ${{ fromJson(steps.get_pr.outputs.data)[0].number }}
           title: Update ${{ steps.vars.outputs.app }} to ${{ steps.vars.outputs.version_short || steps.vars.outputs.version }}
-          body: Changes the `${{ steps.vars.outputs.app }}` container image to version `${{ steps.vars.outputs.version }}`
+          body: Changes the <code>${{ steps.vars.outputs.app }}</code> container image to version <code>${{ steps.vars.outputs.version }}</code>
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
