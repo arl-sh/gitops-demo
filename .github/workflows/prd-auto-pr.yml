@@ -45,11 +45,11 @@ jobs:
       uses: octokit/request-action@v2.x
       if: steps.create_pr.outputs.pr_number == ''
       with:
-        route: GET /repos/{owner}/{repo}/pulls?base={base}&head={head}per_page={per_page}
+        route: GET /repos/{owner}/{repo}/pulls
         owner: ${{ github.repository_owner }}
         repo: ${{ github.event.repository.name }}
         base: ${{ env.MAIN_BRANCH }}
-        head: ${{ steps.vars.outputs.branch }}
+        head: ${{ github.repository_owner }}:${{ steps.vars.outputs.branch }}
         per_page: 1
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
