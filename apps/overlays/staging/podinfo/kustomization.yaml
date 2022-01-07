@@ -3,3 +3,5 @@ kind: Kustomization
 bases:
 - ../../../bases/podinfo
 - ../../../bases/podinfo/updates
+patchesStrategicMerge:
+- updates-automation.yaml

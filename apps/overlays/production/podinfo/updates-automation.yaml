@@ -1,8 +1,11 @@
 apiVersion: image.toolkit.fluxcd.io/v1beta1
 kind: ImageUpdateAutomation
 metadata:
-  name: app-updates
+  name: podinfo-updates
   namespace: apps-sync
 spec:
+  git:
+    push:
+      branch: prd-podinfo-update
   update:
-    path: ./development
+    path: ./production

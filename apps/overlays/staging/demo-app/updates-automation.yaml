@@ -1,11 +1,8 @@
 apiVersion: image.toolkit.fluxcd.io/v1beta1
 kind: ImageUpdateAutomation
 metadata:
-  name: app-updates
+  name: demo-app-updates
   namespace: apps-sync
 spec:
-  git:
-    push:
-      branch: prd-image-update
   update:
-    path: ./production
+    path: ./staging

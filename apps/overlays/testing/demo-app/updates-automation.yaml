@@ -1,7 +1,7 @@
 apiVersion: image.toolkit.fluxcd.io/v1beta1
 kind: ImageUpdateAutomation
 metadata:
-  name: app-updates
+  name: demo-app-updates
   namespace: apps-sync
 spec:
   update:

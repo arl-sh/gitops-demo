@@ -1,8 +1,8 @@
 apiVersion: image.toolkit.fluxcd.io/v1beta1
 kind: ImageRepository
 metadata:
-  name: demo-app
+  name: podinfo-ghcr
   namespace: apps-sync
 spec:
-  image: ghcr.io/au2001/gitops-demo-app
+  image: ghcr.io/stefanprodan/podinfo
   interval: 1m0s

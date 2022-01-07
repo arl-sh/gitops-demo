@@ -1,7 +1,7 @@
 apiVersion: image.toolkit.fluxcd.io/v1beta1
 kind: ImageUpdateAutomation
 metadata:
-  name: app-updates
+  name: demo-app-updates
   namespace: apps-sync
 spec:
   interval: 1m0s
@@ -16,6 +16,11 @@ spec:
       author:
         email: fluxcdbot@users.noreply.github.com
         name: fluxcdbot
-      messageTemplate: Update {{range .Updated.Images}}{{println .}}{{end}}
+      messageTemplate: |
+        Update demo-app
+
+        {{range .Updated.Images}}
+          {{println .}}
+        {{end}}
   update:
     strategy: Setters

@@ -1,11 +1,11 @@
 apiVersion: image.toolkit.fluxcd.io/v1beta1
 kind: ImagePolicy
 metadata:
-  name: demo-app
+  name: demo-app-latest
   namespace: apps-sync
 spec:
   imageRepositoryRef:
-    name: demo-app
+    name: demo-app-ghcr
   policy:
     numerical:
       order: asc

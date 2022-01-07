@@ -1,0 +1,8 @@
+apiVersion: image.toolkit.fluxcd.io/v1beta1
+kind: ImageUpdateAutomation
+metadata:
+  name: podinfo-updates
+  namespace: apps-sync
+spec:
+  update:
+    path: ./testing

@@ -1,0 +1,11 @@
+apiVersion: image.toolkit.fluxcd.io/v1beta1
+kind: ImageUpdateAutomation
+metadata:
+  name: demo-app-updates
+  namespace: apps-sync
+spec:
+  git:
+    push:
+      branch: prd-demo-app-update
+  update:
+    path: ./production
