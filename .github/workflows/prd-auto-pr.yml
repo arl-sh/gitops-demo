@@ -22,7 +22,7 @@ jobs:
       run: |
         branch=`git branch --show-current`
         app=`sed -n 's/^prd-\(.*\)-update$/\1/p' <<< "$branch"`
-        version=`sed -n 's/^\s*APP_VERSION:\s*\(\S*\).*$/\1/p' $app`
+        version=`sed -n 's/^\s*APP_VERSION:\s*\(\S*\).*$/\1/p' ./production/$app/version-map.yaml`
 
         echo ::set-output name=branch::$branch
         echo ::set-output name=app::$app
