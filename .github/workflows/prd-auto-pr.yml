@@ -56,7 +56,7 @@ jobs:
 
     - name: Update existing pull request
       uses: octokit/request-action@v2.x
-      if: steps.create_pr.outputs.pr_number == '' && fromJson(steps.get_pr.outputs.data) != []
+      if: steps.create_pr.outputs.pr_number == '' && fromJson(steps.get_pr.outputs.data)[0] != null
       with:
           route: PATCH /repos/{owner}/{repo}/pulls/{pull_number}
           owner: ${{ github.repository_owner }}
