@@ -4,4 +4,4 @@ metadata:
   name: demo-app-version
   namespace: apps
 data:
-  APP_VERSION: prd-v1.0.1-1641226907 # {"$imagepolicy": "apps-sync:demo-app-latest:tag"}
+  APP_VERSION: prd-v1.0.0-1641219617 # {"$imagepolicy": "apps-sync:demo-app-latest:tag"}
