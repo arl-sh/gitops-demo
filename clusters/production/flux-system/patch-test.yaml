@@ -10,4 +10,4 @@ spec:
       - name: manager
         env:
         - name: HELLO_WORLD
-          value: 123
+          value: "123"
