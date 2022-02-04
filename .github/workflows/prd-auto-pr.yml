@@ -3,10 +3,11 @@ name: Automatic production PRs
 on:
   push:
     branches:
-    - prd-*-update
+    - team-aurelien-prdupdate-*
 
 env:
-  MAIN_BRANCH: config-maps
+  MAIN_BRANCH: team-aurelien-versions
+  BRANCH_PATTERN: ^team-aurelien-prdupdate-\(.*\)$
 
 jobs:
   pull_request:
@@ -21,7 +22,7 @@ jobs:
       id: vars
       run: |
         branch=`git branch --show-current`
-        app=`sed -n 's/^prd-\(.*\)-update$/\1/p' <<< "$branch"`
+        app=`sed -n 's/${{ env.BRANCH_PATTERN }}/\1/p' <<< "$branch"`
         version=`sed -n 's/^\s*APP_VERSION:\s*\(\S*\).*$/\1/p' ./production/$app/version-map.yaml`
         version_short=`sed -n 's/^prd-\(.*\)-[0-9]\+$/\1/p' <<< "$version"`
 
