@@ -1,0 +1,26 @@
+---
+apiVersion: source.toolkit.fluxcd.io/v1beta1
+kind: GitRepository
+metadata:
+  name: aurelien
+  namespace: teams-sync
+spec:
+  interval: 30s
+  ref:
+    branch: team-aurelien
+  url: https://github.com/au2001/gitops-demo.git
+
+---
+apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
+kind: Kustomization
+metadata:
+  name: aurelien
+  namespace: teams-sync
+spec:
+  interval: 30s
+  prune: true
+  sourceRef:
+    kind: GitRepository
+    name: team-aurelien
+  path: ./overlays/production
+  targetNamespace: team-aurelien
