@@ -11,7 +11,7 @@ spec:
   git:
     checkout:
       ref:
-        branch: config-maps
+        branch: team-aurelien-versions
     commit:
       author:
         email: fluxcdbot@users.noreply.github.com

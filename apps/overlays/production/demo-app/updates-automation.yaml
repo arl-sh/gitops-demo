@@ -6,6 +6,6 @@ metadata:
 spec:
   git:
     push:
-      branch: prd-demo-app-update
+      branch: team-aurelien-prdupdate-demo-app
   update:
     path: ./production/demo-app

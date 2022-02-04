@@ -6,6 +6,6 @@ metadata:
 spec:
   git:
     push:
-      branch: prd-podinfo-update
+      branch: team-aurelien-prdupdate-podinfo
   update:
     path: ./production/podinfo

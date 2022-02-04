@@ -6,7 +6,7 @@ metadata:
 spec:
   interval: 30s
   ref:
-    branch: config-maps
+    branch: team-aurelien-versions
   url: ssh://git@github.com/au2001/gitops-demo.git
   secretRef:
     name: config-maps-ssh-key
